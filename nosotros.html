@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dragón Oriental</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/estiloPrincipal.css" />
+  <script src="js/diseño.js"></script>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo Dragón Oriental" /></a>
+      </div>
+      
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      
+      <div class="right-group" id="right-group">
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html" class="active">Nosotros</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="icons">
+        <input type="text" placeholder="Buscar" />
+        <a href="#"><i class="fa-solid fa-cart-shopping carrito-btn"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-contacto">
+    <div class="hero-overlay"></div>
+    <div class="hero-texto">
+        <h2>
+        Nos encantaría recibir tus comentarios y sugerencias.<br>
+        Escríbenos y nos pondremos en contacto con usted.
+        </h2>
+    </div>
+    </section>
+
+    <section class="formulario-contacto">
+        <form action="#" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required>
+
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@email.com" required>
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Número de contacto">
+
+        <label for="asunto">Asunto</label>
+        <input type="text" id="asunto" name="asunto" placeholder="Ejemplo: Trabajo con nosotros - Pedido - Sugerencia">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="6" placeholder="Cuéntenos su consulta o comentario" required></textarea>
+
+        <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+    </section>
+    </main>
+
+
+  <footer>
+    <div class="footer-flex">
+      <div class="footer-info">
+        <h3 style="font-size: 36px;">Dragón Oriental</h3>
+        <p>AUTÉNTICO SABOR ORIENTAL EN CADA BOCADO</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-contacto">
+        <h3>Contacto</h3>
+        <p><i class="fas fa-phone"></i> 11-2345-6789</p>
+        <p><i class="fas fa-envelope"></i> info@dragonoriental.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Calle Oriental 123, Buenos Aires</p>
+      </div>
+
+      <div class="footer-horarios">
+        <h3>Horarios</h3>
+        <p><strong>Lunes a Viernes:</strong> 11:00 - 23:00</p>
+        <p><strong>Sábados y Domingos:</strong> 11:00 - 24:00</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Dragón Oriental. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
