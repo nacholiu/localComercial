@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dragón Oriental</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/estiloPrincipal.css" />
+  <script src="js/diseño.js"></script>
+  <script src="js/calculadoraPromo.js"></script>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo Dragón Oriental" /></a>
+      </div>
+      
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      
+      <div class="right-group" id="right-group">
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html" class="active">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="icons">
+        <input type="text" placeholder="Buscar" />
+        <a href="#"><i class="fa-solid fa-cart-shopping carrito-btn"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="promociones-container">
+      <!-- Promoción 1: 50% en el segundo producto -->
+      <div class="promocion-card" id="promo1">
+        <div class="promocion-header">
+          <div class="promocion-badge">50% OFF</div>
+          <h3 class="promocion-title">Llevá 2 productos y obtené 50% en el segundo</h3>
+        </div>
+        <p class="promocion-desc">Seleccioná dos productos iguales y pagá solo la mitad por el segundo. ¡Aprovechá esta oferta en todos nuestros platos!</p>
+        
+        <div class="productos-seleccion">
+          <div class="producto-item">
+            <img src="img/ramen.png" alt="Ramen" class="producto-img">
+            <h4 class="producto-nombre">Ramen</h4>
+            <p class="producto-precio">$12</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('ramen', -1)">-</button>
+              <input type="number" id="cantidad-ramen" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('ramen', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/mochi.jpg" alt="Mochi" class="producto-img">
+            <h4 class="producto-nombre">Mochi Helado</h4>
+            <p class="producto-precio">$6</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('mochi', -1)">-</button>
+              <input type="number" id="cantidad-mochi" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('mochi', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/bao.png" alt="Bao" class="producto-img">
+            <h4 class="producto-nombre">Bao</h4>
+            <p class="producto-precio">$8</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('bao', -1)">-</button>
+              <input type="number" id="cantidad-bao" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('bao', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="producto-item">
+            <img src="img/bubble tea.jpeg" alt="Bubble Tea" class="producto-img">
+            <h4 class="producto-nombre">Bubble Tea</h4>
+            <p class="producto-precio">$7</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('bubble-tea', -1)">-</button>
+              <input type="number" id="cantidad-bubble-tea" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('bubble-tea', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn-aplicar" onclick="calcularPromo1()">Calcular ahorro</button>
+        
+        <div class="calculo-resultados" id="resultado-promo1" style="display: none;">
+          <div class="resultado-linea">
+            <span>Total sin descuento:</span>
+            <span id="total-sin-descuento-promo1">$0</span>
+          </div>
+          <div class="resultado-linea">
+            <span>Descuento aplicado:</span>
+            <span id="descuento-aplicado-promo1">$0</span>
+          </div>
+          <div class="resultado-linea resultado-total">
+            <span>Total con descuento:</span>
+            <span id="total-con-descuento-promo1">$0</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Promoción 2: 3x2 -->
+      <div class="promocion-card" id="promo2">
+        <div class="promocion-header">
+          <div class="promocion-badge">3X2</div>
+          <h3 class="promocion-title">Llevá 3 productos y pagá solo 2</h3>
+        </div>
+        <p class="promocion-desc">¡Increíble oferta! Comprá 3 productos seleccionados y llevate el tercero completamente gratis. Aplicable en gyozas, baos y brochetas.</p>
+        
+        <div class="productos-seleccion">
+          <div class="producto-item">
+            <img src="img/煎饺.png" alt="Gyozas" class="producto-img">
+            <h4 class="producto-nombre">Gyozas Fritas</h4>
+            <p class="producto-precio">$10</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('gyozas', -1)">-</button>
+              <input type="number" id="cantidad-gyozas" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('gyozas', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/bola de sesamo.jpg" alt="Bolas de sesamo" class="producto-img">
+            <h4 class="producto-nombre">Bolas de Sesamo</h4>
+            <p class="producto-precio">$6</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('bolas-sesamo', -1)">-</button>
+              <input type="number" id="cantidad-bolas-sesamo" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('bolas-sesamo', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/broche pollo.png" alt="Brochetas" class="producto-img">
+            <h4 class="producto-nombre">Brochetas de Pollo</h4>
+            <p class="producto-precio">$10</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('brochetas', -1)">-</button>
+              <input type="number" id="cantidad-brochetas" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('brochetas', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="producto-item">
+            <img src="img/pato a la beijing.png" alt="Arroz con pato a la Beijing" class="producto-img">
+            <h4 class="producto-nombre">Arroz con pato a la Beijing</h4>
+            <p class="producto-precio">$18</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('arroz-pato', -1)">-</button>
+              <input type="number" id="cantidad-arroz-pato" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('arroz-pato', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn-aplicar" onclick="calcularPromo2()">Calcular ahorro</button>
+        
+        <div class="calculo-resultados" id="resultado-promo2" style="display: none;">
+          <div class="resultado-linea">
+            <span>Total sin descuento:</span>
+            <span id="total-sin-descuento-promo2">$0</span>
+          </div>
+          <div class="resultado-linea">
+            <span>Descuento aplicado:</span>
+            <span id="descuento-aplicado-promo2">$0</span>
+          </div>
+          <div class="resultado-linea resultado-total">
+            <span>Total con descuento:</span>
+            <span id="total-con-descuento-promo2">$0</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Promoción 3: 10% por compras superiores a $30 -->
+      <div class="promocion-card" id="promo3">
+        <div class="promocion-header">
+          <div class="promocion-badge">10% OFF</div>
+          <h3 class="promocion-title">10% de descuento por compras superiores a $300</h3>
+        </div>
+        <p class="promocion-desc">Realizá una compra superior a $300 y obtené un 10% de descuento adicional. ¡Perfecto para compartir con amigos y familia!</p>
+        
+        <div class="productos-seleccion">
+          <div class="producto-item">
+            <img src="img/sushi.png" alt="Sushi" class="producto-img">
+            <h4 class="producto-nombre">Sushi</h4>
+            <p class="producto-precio">$15</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('sushi', -1)">-</button>
+              <input type="number" id="cantidad-sushi" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('sushi', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/dorayaki.jpg" alt="Dorayaki" class="producto-img">
+            <h4 class="producto-nombre">Dorayaki</h4>
+            <p class="producto-precio">$5</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('dorayaki', -1)">-</button>
+              <input type="number" id="cantidad-dorayaki" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('dorayaki', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/arroz salmon.jpeg" alt="Arroz salmon" class="producto-img">
+            <h4 class="producto-nombre">Arroz con Salmón a la Plancha</h4>
+            <p class="producto-precio">$17</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('arroz-salmon', -1)">-</button>
+              <input type="number" id="cantidad-arroz-salmon" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('arroz-salmon', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="producto-item">
+            <img src="img/takoyaki.png" alt="takoyaki" class="producto-img">
+            <h4 class="producto-nombre">Takoyaki</h4>
+            <p class="producto-precio">$11</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('takoyaki', -1)">-</button>
+              <input type="number" id="cantidad-takoyaki" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('takoyaki', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/udon.jpg" alt="Udon" class="producto-img">
+            <h4 class="producto-nombre">Udon con Tempura</h4>
+            <p class="producto-precio">$13</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('udon', -1)">-</button>
+              <input type="number" id="cantidad-udon" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('udon', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="producto-item">
+            <img src="img/maotai.jpg" alt="maotai" class="producto-img">
+            <h4 class="producto-nombre">Maotai</h4>
+            <p class="producto-precio">$18</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('maotai', -1)">-</button>
+              <input type="number" id="cantidad-maotai" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('maotai', 1)">+</button>
+            </div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/tarta de queso con sirope.jpg" alt="Tarta de Queso con Sirope" class="producto-img">
+            <h4 class="producto-nombre">Tarta de Queso con Sirope</h4>
+            <p class="producto-precio">$8</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('tarta-queso', -1)">-</button>
+              <input type="number" id="cantidad-tarta-queso" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('tarta-queso', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="producto-item">
+            <img src="img/laksa malaya.webp" alt="Laksa Malaya" class="producto-img">
+            <h4 class="producto-nombre">Laksa Malaya</h4>
+            <p class="producto-precio">$14</p>
+            <div class="cantidad-control">
+              <button class="cantidad-btn" onclick="cambiarCantidad('laksa', -1)">-</button>
+              <input type="number" id="cantidad-laksa" class="cantidad-input" value="0" min="0" readonly>
+              <button class="cantidad-btn" onclick="cambiarCantidad('laksa', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn-aplicar" onclick="calcularPromo3()">Calcular ahorro</button>
+        
+        <div class="calculo-resultados" id="resultado-promo3" style="display: none;">
+          <div class="resultado-linea">
+            <span>Total sin descuento:</span>
+            <span id="total-sin-descuento-promo3">$0</span>
+          </div>
+          <div class="resultado-linea">
+            <span>Descuento aplicado (10%):</span>
+            <span id="descuento-aplicado-promo3">$0</span>
+          </div>
+          <div class="resultado-linea resultado-total">
+            <span>Total con descuento:</span>
+            <span id="total-con-descuento-promo3">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promoción 4: Combo Familiar Oriental -->
+      <div class="promocion-interactiva promocion-card">
+        <div class="promocion-header">
+          <div class="promocion-badge">COMBO</div>
+          <h3 class="promocion-title">Combo Familiar Oriental - 25% OFF</h3>
+        </div>
+        <p class="promocion-desc">¡Perfecto para compartir en familia! Incluye una selección completa de nuestros mejores platos con un 25% de descuento sobre el precio individual.</p>
+        
+        <div class="combo-descripcion">
+          <h4 class="combo-titulo">Este combo incluye:</h4>
+          <div class="combo-items">
+            <div class="combo-item">
+              <p class="combo-producto">🥟 4 Gyozas</p>
+              <p class="combo-precio-individual">($10 valor plato)</p>
+            </div>
+            <div class="combo-item">
+              <p class="combo-producto">🍜 2 Ramen</p>
+              <p class="combo-precio-individual">($12 valor plato)</p>
+            </div>
+            <div class="combo-item">
+              <p class="combo-producto">🍚 1 Arroz Kung Pao</p>
+              <p class="combo-precio-individual">($11 valor plato)</p>
+            </div>
+            <div class="combo-item">
+              <p class="combo-producto">🥤 2 Bebidas</p>
+              <p class="combo-precio-individual">($5 valor individual)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="productos-seleccion">
+          <div class="producto-item">
+            <img src="img/煎饺.png" alt="Gyozas" class="producto-img">
+            <h4 class="producto-nombre">Gyozas (4 unidades)</h4>
+            <p class="producto-precio">$10</p>
+            <div class="combo-incluido">Incluido en combo</div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/ramen.png" alt="Ramen" class="producto-img">
+            <h4 class="producto-nombre">Ramen (2 unidades)</h4>
+            <p class="producto-precio">$24</p>
+            <div class="combo-incluido">Incluido en combo</div>
+          </div>
+          
+          <div class="producto-item">
+            <img src="img/kung pao.jpeg" alt="Arroz Kung Pao" class="producto-img">
+            <h4 class="producto-nombre">Arroz Kung Pao</h4>
+            <p class="producto-precio">$11</p>
+            <div class="combo-incluido">Incluido en combo</div>
+          </div>
+        </div>
+
+        <div class="combo-precios">
+          <div class="precio-individual">
+            Precio total individual: <span class="precio-tachado">$55</span>
+          </div>
+          <div class="precio-combo">
+            Precio combo: $41.25
+          </div>
+          <div class="ahorro-combo">
+            ¡Ahorrás $13.75!
+          </div>
+        </div>
+        
+        <button class="btn-calcular" onclick="calcularComboFamiliar()">Calcular mi ahorro</button>
+        
+        <div class="calculo-resultados" id="resultado-combo-familiar">
+          <div class="resultado-linea">
+            <span>Precio individual total:</span>
+            <span id="precio-individual-combo">$55</span>
+          </div>
+          <div class="resultado-linea">
+            <span>Descuento aplicado (25%):</span>
+            <span id="descuento-combo">$13.75</span>
+          </div>
+          <div class="resultado-linea resultado-total">
+            <span>Precio final del combo:</span>
+            <span id="precio-final-combo">$41.25</span>
+          </div>
+          <button class="btn-card btn-combo" onclick="agregarComboAlCarrito()">Agregar Combo Familiar al Carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-flex">
+      <div class="footer-info">
+        <h3 style="font-size: 36px;">Dragón Oriental</h3>
+        <p>AUTÉNTICO SABOR ORIENTAL EN CADA BOCADO</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-contacto">
+        <h3>Contacto</h3>
+        <p><i class="fas fa-phone"></i> 11-2345-6789</p>
+        <p><i class="fas fa-envelope"></i> info@dragonoriental.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Calle Oriental 123, Buenos Aires</p>
+      </div>
+
+      <div class="footer-horarios">
+        <h3>Horarios</h3>
+        <p><strong>Lunes a Viernes:</strong> 11:00 - 23:00</p>
+        <p><strong>Sábados y Domingos:</strong> 11:00 - 24:00</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Dragón Oriental. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
